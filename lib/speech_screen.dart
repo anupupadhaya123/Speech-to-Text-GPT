@@ -18,19 +18,6 @@ class _SpeechScreenState extends State<SpeechScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var container = Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      margin: const EdgeInsets.only(bottom: 150),
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 20,
-          color: Colors.black54,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    );
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: AvatarGlow(
@@ -91,7 +78,25 @@ class _SpeechScreenState extends State<SpeechScreen> {
           ),
         ),
       ),
-      body: container,
+      body: SingleChildScrollView(
+        reverse: true,
+        physics: const BouncingScrollPhysics(),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.7,
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          margin: const EdgeInsets.only(bottom: 150),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 20,
+              color: isListening ? Colors.black87 : Colors.black54,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
